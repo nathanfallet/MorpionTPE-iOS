@@ -202,13 +202,37 @@ class GameViewController: UIViewController {
         DispatchQueue.main.async {
             // Update infos label
             if self.game.current != .empty {
-                // We have a currently playing player
-                self.infos.text = "Game is playing:\nPlayer \(self.game.current), it's to you!"
+                // Get the player object
+                var current: Player?
+                for player in [self.game.player1, self.game.player2] {
+                    if player.sign == self.game.current {
+                        current = player
+                    }
+                }
+                
+                // Differentiate human and computer in text
+                if current as? Computer != nil {
+                    self.infos.text = "Game is playing:\nComputer (\(self.game.current)), it's to you!"
+                } else {
+                    self.infos.text = "Game is playing:\nPlayer \(self.game.current), it's to you!"
+                }
                 self.back.isHidden = true
             } else {
                 // Game has ended
                 let win = self.game.win(table: self.game.table)
-                self.infos.text = "Game has ended!\n\(win == .empty ? "It's a tie" : "Winner: \(win)")"
+                var current: Player?
+                for player in [self.game.player1, self.game.player2] {
+                    if player.sign == win {
+                        current = player
+                    }
+                }
+                
+                // Differentiate human and computer in text
+                if current as? Computer != nil {
+                    self.infos.text = "Game has ended!\nWinner: Computer (\(win))"
+                } else {
+                    self.infos.text = "Game has ended!\n\(win == .empty ? "It's a tie" : "Winner: Player \(win)")"
+                }
                 self.back.isHidden = false
             }
             

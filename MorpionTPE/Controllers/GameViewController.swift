@@ -37,9 +37,11 @@ class GameViewController: UIViewController {
         
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(boardChanged(_:)), name: .boardChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
         
-        // Set background color
-        view.backgroundColor = .white
+        // Init colors
+        isDarkMode() ? enableDarkMode() : disableDarkMode()
         
         // Add elements to view
         view.addSubview(box1)
@@ -174,7 +176,7 @@ class GameViewController: UIViewController {
         
         back.setTitle("Go back to menu", for: .normal)
         back.setTitleColor(.white, for: .normal)
-        back.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+        back.backgroundColor = CustomColor.lightActive
         back.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
         
         // Load the empty grid
@@ -188,6 +190,8 @@ class GameViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .boardChanged, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
     @objc func boardChanged(_ sender: Any) {
@@ -216,9 +220,6 @@ class GameViewController: UIViewController {
                     let box = boxes[x][y]
                     let sign = self.game.table[x][y]
                     
-                    box.layer.borderWidth = 1
-                    box.layer.borderColor = UIColor.black.cgColor
-                    
                     if sign != .empty {
                         box.image = UIImage(named: sign == .X ? "x" : "o")
                     } else {
@@ -246,6 +247,47 @@ class GameViewController: UIViewController {
     
     @objc func back(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func isDarkMode() -> Bool {
+        let datas = UserDefaults.standard
+        
+        if(datas.value(forKey: "isDarkMode") != nil){
+            return datas.value(forKey: "isDarkMode") as! Bool
+        }
+        return false
+    }
+    
+    @objc func darkModeEnabled(_ notification: Foundation.Notification) {
+        enableDarkMode()
+    }
+    
+    @objc func darkModeDisabled(_ notification: Foundation.Notification) {
+        disableDarkMode()
+    }
+    
+    open func enableDarkMode() {
+        self.view.backgroundColor = CustomColor.darkBackground
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
+        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
+        self.infos.textColor = CustomColor.darkText
+        for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
+            box.layer.borderWidth = 1
+            box.layer.borderColor = CustomColor.darkActive.cgColor
+        }
+    }
+    
+    open func disableDarkMode() {
+        self.view.backgroundColor = CustomColor.lightBackground
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
+        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
+        self.infos.textColor = CustomColor.lightText
+        for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
+            box.layer.borderWidth = 1
+            box.layer.borderColor = CustomColor.lightActive.cgColor
+        }
     }
 
 }

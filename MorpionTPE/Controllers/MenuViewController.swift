@@ -21,8 +21,12 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set background color
-        view.backgroundColor = .white
+        // Listen for color changes
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+        
+        // Init colors
+        isDarkMode() ? enableDarkMode() : disableDarkMode()
         
         // Add elements to view
         view.addSubview(menu)
@@ -45,7 +49,8 @@ class MenuViewController: UIViewController {
         name.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         
         name.text = "Tic TAI Toe"
-        name.font = UIFont.boldSystemFont(ofSize: 32)
+        name.font = UIFont.boldSystemFont(ofSize: 48)
+        name.adjustsFontSizeToFitWidth = true
         
         // Setup 1st button
         button1.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +66,7 @@ class MenuViewController: UIViewController {
         button1.tag = 0
         button1.setTitle("Player VS Player", for: .normal)
         button1.setTitleColor(.white, for: .normal)
-        button1.backgroundColor = .orange
+        button1.backgroundColor = CustomColor.darkActive
         button1.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         
         // Setup 2nd button
@@ -78,7 +83,7 @@ class MenuViewController: UIViewController {
         button2.tag = 1
         button2.setTitle("Player VS Computer", for: .normal)
         button2.setTitleColor(.white, for: .normal)
-        button2.backgroundColor = .orange
+        button2.backgroundColor = CustomColor.darkActive
         button2.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         
         // Setup 3rd button
@@ -95,7 +100,7 @@ class MenuViewController: UIViewController {
         button3.tag = 2
         button3.setTitle("Computer VS Computer", for: .normal)
         button3.setTitleColor(.white, for: .normal)
-        button3.backgroundColor = .orange
+        button3.backgroundColor = CustomColor.darkActive
         button3.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
         
         // Setup settings button
@@ -111,7 +116,8 @@ class MenuViewController: UIViewController {
         
         settings.setTitle("Settings", for: .normal)
         settings.setTitleColor(.white, for: .normal)
-        settings.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+        settings.backgroundColor = CustomColor.lightActive
+        settings.addTarget(self, action: #selector(openSettings(_:)), for: .touchUpInside)
         
         // Setup the bottom text
         bottom.translatesAutoresizingMaskIntoConstraints = false
@@ -123,6 +129,11 @@ class MenuViewController: UIViewController {
         bottom.text = "This app was made live by Nathan Fallet\n© Groupe MINASTE"
         bottom.numberOfLines = 2
         bottom.textAlignment = .center
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
     @objc func startGame(_ sender: UIButton) {
@@ -139,6 +150,47 @@ class MenuViewController: UIViewController {
         let gameVC = GameViewController(game: game)
         
         present(gameVC, animated: true, completion: nil)
+    }
+    
+    @objc func openSettings(_ sender: UIButton) {
+        let settingsVC = UINavigationController(rootViewController: SettingsTableViewController(style: .grouped))
+        
+        present(settingsVC, animated: true, completion: nil)
+    }
+    
+    func isDarkMode() -> Bool {
+        let datas = UserDefaults.standard
+        
+        if(datas.value(forKey: "isDarkMode") != nil){
+            return datas.value(forKey: "isDarkMode") as! Bool
+        }
+        return false
+    }
+    
+    @objc func darkModeEnabled(_ notification: Foundation.Notification) {
+        enableDarkMode()
+    }
+    
+    @objc func darkModeDisabled(_ notification: Foundation.Notification) {
+        disableDarkMode()
+    }
+    
+    open func enableDarkMode() {
+        self.view.backgroundColor = CustomColor.darkBackground
+        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
+        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
+        self.name.textColor = CustomColor.darkText
+        self.bottom.textColor = CustomColor.darkText
+    }
+    
+    open func disableDarkMode() {
+        self.view.backgroundColor = CustomColor.lightBackground
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
+        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
+        self.name.textColor = CustomColor.lightText
+        self.bottom.textColor = CustomColor.lightText
     }
 
 }

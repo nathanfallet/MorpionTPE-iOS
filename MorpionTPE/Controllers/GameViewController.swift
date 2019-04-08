@@ -292,9 +292,7 @@ class GameViewController: UIViewController {
     
     open func enableDarkMode() {
         self.view.backgroundColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
+        self.setNeedsStatusBarAppearanceUpdate()
         self.infos.textColor = CustomColor.darkText
         for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
             box.layer.borderWidth = 1
@@ -304,14 +302,16 @@ class GameViewController: UIViewController {
     
     open func disableDarkMode() {
         self.view.backgroundColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
+        self.setNeedsStatusBarAppearanceUpdate()
         self.infos.textColor = CustomColor.lightText
         for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
             box.layer.borderWidth = 1
             box.layer.borderColor = CustomColor.lightActive.cgColor
         }
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isDarkMode() ? .lightContent : .default
     }
 
 }

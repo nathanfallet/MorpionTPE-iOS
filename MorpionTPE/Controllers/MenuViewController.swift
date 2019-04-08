@@ -193,20 +193,22 @@ class MenuViewController: UIViewController {
     
     open func enableDarkMode() {
         self.view.backgroundColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
+        self.setNeedsStatusBarAppearanceUpdate()
         self.name.textColor = CustomColor.darkText
+        self.subname.textColor = CustomColor.darkText
         self.bottom.textColor = CustomColor.darkText
     }
     
     open func disableDarkMode() {
         self.view.backgroundColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
+        self.setNeedsStatusBarAppearanceUpdate()
         self.name.textColor = CustomColor.lightText
+        self.subname.textColor = CustomColor.lightText
         self.bottom.textColor = CustomColor.lightText
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isDarkMode() ? .lightContent : .default
     }
 
 }

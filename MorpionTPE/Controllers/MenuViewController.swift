@@ -12,6 +12,7 @@ class MenuViewController: UIViewController {
     
     let menu = UIView()
     let name = UILabel()
+    let subname = UILabel()
     let button1 = UIButton()
     let button2 = UIButton()
     let button3 = UIButton()
@@ -31,6 +32,7 @@ class MenuViewController: UIViewController {
         // Add elements to view
         view.addSubview(menu)
         view.addSubview(name)
+        view.addSubview(subname)
         view.addSubview(button1)
         view.addSubview(button2)
         view.addSubview(button3)
@@ -47,15 +49,28 @@ class MenuViewController: UIViewController {
         
         name.topAnchor.constraint(equalTo: menu.topAnchor).isActive = true
         name.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
+        name.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
         name.text = "Tic TAI Toe"
         name.font = UIFont.boldSystemFont(ofSize: 48)
         name.adjustsFontSizeToFitWidth = true
+        name.textAlignment = .center
+        
+        // Setup subname
+        subname.translatesAutoresizingMaskIntoConstraints = false
+        
+        subname.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 20).isActive = true
+        subname.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
+        subname.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        subname.text = "A tic tac toe, with an AI and a PRO feature"
+        subname.numberOfLines = 0
+        subname.textAlignment = .center
         
         // Setup 1st button
         button1.translatesAutoresizingMaskIntoConstraints = false
         
-        button1.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 50).isActive = true
+        button1.topAnchor.constraint(equalTo: subname.bottomAnchor, constant: 40).isActive = true
         button1.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         button1.widthAnchor.constraint(equalToConstant: 300).isActive = true
         button1.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -122,12 +137,13 @@ class MenuViewController: UIViewController {
         // Setup the bottom text
         bottom.translatesAutoresizingMaskIntoConstraints = false
         
-        bottom.topAnchor.constraint(equalTo: settings.bottomAnchor, constant: 50).isActive = true
+        bottom.topAnchor.constraint(equalTo: settings.bottomAnchor, constant: 40).isActive = true
         bottom.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         bottom.bottomAnchor.constraint(equalTo: menu.bottomAnchor).isActive = true
+        bottom.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        bottom.text = "This app was made live by Nathan Fallet\n© Groupe MINASTE"
-        bottom.numberOfLines = 2
+        bottom.text = "App made by Nathan Fallet\n© Groupe MINASTE"
+        bottom.numberOfLines = 0
         bottom.textAlignment = .center
     }
     

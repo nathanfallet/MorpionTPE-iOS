@@ -20,6 +20,8 @@ class GameViewController: UIViewController {
     let box7 = UIImageView()
     let box8 = UIImageView()
     let box9 = UIImageView()
+    let infos = UILabel()
+    let back = UIButton()
     
     init(game: Game) {
         self.game = game
@@ -49,6 +51,8 @@ class GameViewController: UIViewController {
         view.addSubview(box7)
         view.addSubview(box8)
         view.addSubview(box9)
+        view.addSubview(infos)
+        view.addSubview(back)
         
         // Setup box 1
         box1.translatesAutoresizingMaskIntoConstraints = false
@@ -149,8 +153,32 @@ class GameViewController: UIViewController {
         box9.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnImage(_:))))
         box9.isUserInteractionEnabled = true
         
+        // Setup infos
+        infos.translatesAutoresizingMaskIntoConstraints = false
+        infos.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
+        infos.bottomAnchor.constraint(equalTo: box2.topAnchor, constant: -50).isActive = true
+        
+        infos.font = UIFont.boldSystemFont(ofSize: 26)
+        infos.numberOfLines = 2
+        infos.textAlignment = .center
+        
+        // Setup back
+        back.translatesAutoresizingMaskIntoConstraints = false
+        back.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
+        back.topAnchor.constraint(equalTo: box8.bottomAnchor, constant: 50).isActive = true
+        back.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        back.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        back.layer.cornerRadius = 4
+        back.clipsToBounds = true
+        
+        back.setTitle("Go back to menu", for: .normal)
+        back.setTitleColor(.white, for: .normal)
+        back.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+        back.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
+        
         // Load the empty grid
-        updateImages()
+        updateUI()
         
         // Everything is up, start the game
         DispatchQueue.global(qos: .background).async {
@@ -163,11 +191,24 @@ class GameViewController: UIViewController {
     }
     
     @objc func boardChanged(_ sender: Any) {
-        updateImages()
+        updateUI()
     }
     
-    func updateImages() {
+    func updateUI() {
         DispatchQueue.main.async {
+            // Update infos label
+            if self.game.current != .empty {
+                // We have a currently playing player
+                self.infos.text = "Game is playing:\nPlayer \(self.game.current), it's to you!"
+                self.back.isHidden = true
+            } else {
+                // Game has ended
+                let win = self.game.win(table: self.game.table)
+                self.infos.text = "Game has ended!\n\(win == .empty ? "It's a tie" : "Winner: \(win)")"
+                self.back.isHidden = false
+            }
+            
+            // Update images
             let boxes = [[self.box1, self.box4, self.box7], [self.box2, self.box5, self.box8], [self.box3, self.box6, self.box9]]
             
             for x in 0 ..< 3 {
@@ -175,7 +216,6 @@ class GameViewController: UIViewController {
                     let box = boxes[x][y]
                     let sign = self.game.table[x][y]
                     
-                    box.backgroundColor = .white
                     box.layer.borderWidth = 1
                     box.layer.borderColor = UIColor.black.cgColor
                     
@@ -202,6 +242,10 @@ class GameViewController: UIViewController {
                 human.completion?(x, y)
             }
         }
+    }
+    
+    @objc func back(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
 
 }

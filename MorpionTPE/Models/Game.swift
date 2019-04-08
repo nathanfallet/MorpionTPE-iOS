@@ -48,9 +48,9 @@ class Game {
             }
         }
         
-        // END OF GAME
+        // The game ended
         current = .empty
-        print("\(win) won")
+        NotificationCenter.default.post(name: .boardChanged, object: nil)
     }
     
     // Make a player plays in the board

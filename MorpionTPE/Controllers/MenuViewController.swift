@@ -44,7 +44,7 @@ class MenuViewController: UIViewController {
         name.topAnchor.constraint(equalTo: menu.topAnchor).isActive = true
         name.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         
-        name.text = "Tic Tac Toe AI"
+        name.text = "Tic TAI Toe"
         name.font = UIFont.boldSystemFont(ofSize: 32)
         
         // Setup 1st button

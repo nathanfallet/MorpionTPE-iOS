@@ -34,7 +34,7 @@ class SettingsTableViewController: UITableViewController {
         // Load content
         sections += [
             SettingsSection(name: "Tic TAI PRO features", elements: [
-                SettingsElementSwitch(id: "isDarkMode", text: "Enable dark mode", d: true)
+                SettingsElementSwitch(id: "isDarkMode", text: "Enable dark mode", d: false)
             ]),
             SettingsSection(name: "Groupe MINASTE", elements: [
                 SettingsElementButton(id: "moreApps", text: "More apps") { () in

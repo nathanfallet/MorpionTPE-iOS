@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  MorpionTPE
+
+  Created by Nathan FALLET on 09/04/2019.
+  Copyright © 2019 Nathan FALLET. All rights reserved.
+*/
+
+// TO BE TRANSLATED (remove this comment after translation)
+// Make a pull request when you're done
+
+// Menu
+"name" = "Tic TAI Toe";
+"subname" = "A tic tac toe, with an AI and PRO features";
+"button1" = "Player VS Player";
+"button2" = "Player VS Computer";
+"button3" = "Computer VS Computer";
+"settings" = "Settings";
+"bottom" = "App made by Nathan Fallet\n© Groupe MINASTE";
+
+// Game
+"back" = "Go back to menu";
+"playing_computer" = "Game is playing:\nComputer (%@), it's to you!";
+"playing_human" = "Game is playing:\nPlayer %@, it's to you!";
+"ended_computer" = "Game has ended!\nWinner: Computer (%@)";
+"ended_human" = "Game has ended!\nWinner: Player %@";
+"ended_empty" = "Game has ended!\nIt's a tie";
+
+// Settings
+"pro" = "Tic TAI PRO features";
+"isDarkMode" = "Enable dark mode";
+"about" = "More about the app";
+"video" = "See the development video";
+"instagram" = "Follow the developer on Instagram";
+"moreApps" = "More apps";
+"donate" = "Donate";

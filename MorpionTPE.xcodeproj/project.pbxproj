@@ -36,6 +36,7 @@
 		6A9606A9225D0F49001604D6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A9606AA225D1240001604D6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A9606AB225D1F25001604D6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		6A9606AD225D2958001604D6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AAE0175225B677400A4E2A4 /* MorpionTPE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorpionTPE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AAE0178225B677400A4E2A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AAE017F225B677700A4E2A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +191,7 @@
 				Base,
 				fr,
 				es,
+				de,
 			);
 			mainGroup = 6AAE016C225B677400A4E2A4;
 			productRefGroup = 6AAE0176225B677400A4E2A4 /* Products */;
@@ -249,6 +251,7 @@
 				6A9606A5225D0B4B001604D6 /* en */,
 				6A9606A9225D0F49001604D6 /* fr */,
 				6A9606AA225D1240001604D6 /* es */,
+				6A9606AD225D2958001604D6 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

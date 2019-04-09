@@ -158,7 +158,8 @@ class MenuViewController: UIViewController {
         if sender.tag == 0 {
             game = Game(player1: Human(sign: .X), player2: Human(sign: .O))
         } else if sender.tag == 1 {
-            game = Game(player1: Computer(sign: .X), player2: Human(sign: .O))
+            let players = [Computer(sign: .X), Human(sign: .O)].shuffled()
+            game = Game(player1: players[0], player2: players[1])
         } else {
             game = Game(player1: Computer(sign: .X), player2: Computer(sign: .O))
         }

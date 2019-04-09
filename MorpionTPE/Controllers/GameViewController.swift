@@ -174,7 +174,7 @@ class GameViewController: UIViewController {
         back.layer.cornerRadius = 4
         back.clipsToBounds = true
         
-        back.setTitle("Go back to menu", for: .normal)
+        back.setTitle("back".localized(), for: .normal)
         back.setTitleColor(.white, for: .normal)
         back.backgroundColor = CustomColor.lightActive
         back.addTarget(self, action: #selector(back(_:)), for: .touchUpInside)
@@ -212,9 +212,9 @@ class GameViewController: UIViewController {
                 
                 // Differentiate human and computer in text
                 if current as? Computer != nil {
-                    self.infos.text = "Game is playing:\nComputer (\(self.game.current)), it's to you!"
+                    self.infos.text = "playing_computer".localized().format("\(self.game.current)")
                 } else {
-                    self.infos.text = "Game is playing:\nPlayer \(self.game.current), it's to you!"
+                    self.infos.text = "playing_human".localized().format("\(self.game.current)")
                 }
                 self.back.isHidden = true
             } else {
@@ -229,9 +229,11 @@ class GameViewController: UIViewController {
                 
                 // Differentiate human and computer in text
                 if current as? Computer != nil {
-                    self.infos.text = "Game has ended!\nWinner: Computer (\(win))"
+                    self.infos.text = "ended_computer".localized().format("\(win)")
+                } else if current as? Human != nil {
+                    self.infos.text = "ended_human".localized().format("\(win)")
                 } else {
-                    self.infos.text = "Game has ended!\n\(win == .empty ? "It's a tie" : "Winner: Player \(win)")"
+                    self.infos.text = "ended_empty".localized()
                 }
                 self.back.isHidden = false
             }

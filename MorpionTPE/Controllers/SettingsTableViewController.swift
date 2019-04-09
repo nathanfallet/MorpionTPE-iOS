@@ -16,7 +16,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Navigation
-        navigationItem.title = "Settings"
+        navigationItem.title = "settings".localized()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismiss(_:)))
         
         // Register cells
@@ -33,14 +33,14 @@ class SettingsTableViewController: UITableViewController {
         
         // Load content
         sections += [
-            SettingsSection(name: "Tic TAI PRO features", elements: [
-                SettingsElementSwitch(id: "isDarkMode", text: "Enable dark mode", d: false)
+            SettingsSection(name: "pro".localized(), elements: [
+                SettingsElementSwitch(id: "isDarkMode", text: "isDarkMode".localized(), d: false)
             ]),
             SettingsSection(name: "Groupe MINASTE", elements: [
-                SettingsElementButton(id: "moreApps", text: "More apps") { () in
+                SettingsElementButton(id: "moreApps", text: "moreApps".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
                 },
-                SettingsElementButton(id: "donate", text: "Donate") { () in
+                SettingsElementButton(id: "donate", text: "donate".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://www.paypal.me/NathanFallet")!)
                 }
             ])

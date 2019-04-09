@@ -51,7 +51,7 @@ class MenuViewController: UIViewController {
         name.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         name.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        name.text = "Tic TAI Toe"
+        name.text = "name".localized()
         name.font = UIFont.boldSystemFont(ofSize: 48)
         name.adjustsFontSizeToFitWidth = true
         name.textAlignment = .center
@@ -63,7 +63,7 @@ class MenuViewController: UIViewController {
         subname.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         subname.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        subname.text = "A tic tac toe, with an AI and a PRO feature"
+        subname.text = "subname".localized()
         subname.numberOfLines = 0
         subname.textAlignment = .center
         
@@ -79,7 +79,7 @@ class MenuViewController: UIViewController {
         button1.clipsToBounds = true
         
         button1.tag = 0
-        button1.setTitle("Player VS Player", for: .normal)
+        button1.setTitle("button1".localized(), for: .normal)
         button1.setTitleColor(.white, for: .normal)
         button1.backgroundColor = CustomColor.darkActive
         button1.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
@@ -96,7 +96,7 @@ class MenuViewController: UIViewController {
         button2.clipsToBounds = true
         
         button2.tag = 1
-        button2.setTitle("Player VS Computer", for: .normal)
+        button2.setTitle("button2".localized(), for: .normal)
         button2.setTitleColor(.white, for: .normal)
         button2.backgroundColor = CustomColor.darkActive
         button2.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
@@ -113,7 +113,7 @@ class MenuViewController: UIViewController {
         button3.clipsToBounds = true
         
         button3.tag = 2
-        button3.setTitle("Computer VS Computer", for: .normal)
+        button3.setTitle("button3".localized(), for: .normal)
         button3.setTitleColor(.white, for: .normal)
         button3.backgroundColor = CustomColor.darkActive
         button3.addTarget(self, action: #selector(startGame(_:)), for: .touchUpInside)
@@ -129,7 +129,7 @@ class MenuViewController: UIViewController {
         settings.layer.cornerRadius = 4
         settings.clipsToBounds = true
         
-        settings.setTitle("Settings", for: .normal)
+        settings.setTitle("settings".localized(), for: .normal)
         settings.setTitleColor(.white, for: .normal)
         settings.backgroundColor = CustomColor.lightActive
         settings.addTarget(self, action: #selector(openSettings(_:)), for: .touchUpInside)
@@ -142,7 +142,7 @@ class MenuViewController: UIViewController {
         bottom.bottomAnchor.constraint(equalTo: menu.bottomAnchor).isActive = true
         bottom.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        bottom.text = "App made by Nathan Fallet\n© Groupe MINASTE"
+        bottom.text = "bottom".localized()
         bottom.numberOfLines = 0
         bottom.textAlignment = .center
     }

@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  MorpionTPE
+
+  Created by Nathan FALLET on 09/04/2019.
+  Copyright © 2019 Nathan FALLET. All rights reserved.
+*/
+
+// Menu
+"name" = "Tic TAI Toe";
+"subname" = "Tres en raya, con IA y PRO funcionalidades";
+"button1" = "Jugador VS Jugador";
+"button2" = "Jugador VS Ordenador";
+"button3" = "Ordenador VS Ordenador";
+"settings" = "Ajustes";
+"bottom" = "App hecha por Nathan Fallet\n© Groupe MINASTE";
+
+// Game
+"back" = "Volver al menú";
+"playing_computer" = "Juego en proceso:\n¡Es el turno del ordenador (%@)!";
+"playing_human" = "Juego en proceso:\n¡Es el turno del jugador %@!";
+"ended_computer" = "¡Juego terminado!\nGanador: Ordenador (%@)";
+"ended_human" = "¡Juego terminado!\nGanador: Jugador %@";
+"ended_empty" = "¡Juego terminado!\nEmpate";
+
+// Settings
+"pro" = "Tic TAI PRO funcionalidades";
+"isDarkMode" = "Activar el modo oscuro";
+"moreApps" = "Más applicaciones";
+"donate" = "Hacer un donativo";

@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  MorpionTPE
+
+  Created by Nathan FALLET on 09/04/2019.
+  Copyright © 2019 Nathan FALLET. All rights reserved.
+*/
+
+// Menu
+"name" = "Tic TAI Toe";
+"subname" = "Un Morpion, avec une IA et des fonctionnalités PRO";
+"button1" = "Joueur VS Joueur";
+"button2" = "Joueur VS Ordinateur";
+"button3" = "Ordinateur VS Ordinateur";
+"settings" = "Paramètres";
+"bottom" = "App créé par Nathan Fallet\n© Groupe MINASTE";
+
+// Game
+"back" = "Retour au menu";
+"playing_computer" = "Partie en cours :\nC'est au tour de l'ordinateur (%@) !";
+"playing_human" = "Partie en cours :\nC'est au tour du joueur %@ !";
+"ended_computer" = "Partie terminée !\nGagnant : Ordinateur (%@)";
+"ended_human" = "Partie terminée !\nGagnant : Joueur %@";
+"ended_empty" = "Partie terminée !\nMatch nul";
+
+// Settings
+"pro" = "Fonctionnalités Tic TAI PRO";
+"isDarkMode" = "Activer le thème foncé";
+"moreApps" = "Plus d'applications";
+"donate" = "Faire un don";

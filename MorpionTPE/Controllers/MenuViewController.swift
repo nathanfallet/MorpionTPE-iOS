@@ -174,41 +174,18 @@ class MenuViewController: UIViewController {
         present(settingsVC, animated: true, completion: nil)
     }
     
-    func isDarkMode() -> Bool {
-        let datas = UserDefaults.standard
-        
-        if(datas.value(forKey: "isDarkMode") != nil){
-            return datas.value(forKey: "isDarkMode") as! Bool
-        }
-        return false
-    }
-    
-    @objc func darkModeEnabled(_ notification: Foundation.Notification) {
-        enableDarkMode()
-    }
-    
-    @objc func darkModeDisabled(_ notification: Foundation.Notification) {
-        disableDarkMode()
-    }
-    
-    open func enableDarkMode() {
-        self.view.backgroundColor = CustomColor.darkBackground
-        self.setNeedsStatusBarAppearanceUpdate()
+    @objc override func enableDarkMode() {
+        super.enableDarkMode()
         self.name.textColor = CustomColor.darkText
         self.subname.textColor = CustomColor.darkText
         self.bottom.textColor = CustomColor.darkText
     }
     
-    open func disableDarkMode() {
-        self.view.backgroundColor = CustomColor.lightBackground
-        self.setNeedsStatusBarAppearanceUpdate()
+    @objc override func disableDarkMode() {
+        super.disableDarkMode()
         self.name.textColor = CustomColor.lightText
         self.subname.textColor = CustomColor.lightText
         self.bottom.textColor = CustomColor.lightText
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return isDarkMode() ? .lightContent : .default
     }
 
 }

@@ -26,5 +26,8 @@
 // Settings
 "pro" = "Tic TAI PRO features";
 "isDarkMode" = "Enable dark mode";
+"about" = "More about the app";
+"video" = "See the development video";
+"instagram" = "Follow the developer on Instagram";
 "moreApps" = "More apps";
 "donate" = "Donate";

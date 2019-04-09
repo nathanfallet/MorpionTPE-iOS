@@ -36,6 +36,14 @@ class SettingsTableViewController: UITableViewController {
             SettingsSection(name: "pro".localized(), elements: [
                 SettingsElementSwitch(id: "isDarkMode", text: "isDarkMode".localized(), d: false)
             ]),
+            SettingsSection(name: "about".localized(), elements: [
+                SettingsElementButton(id: "video", text: "video".localized()) { () in
+                    UIApplication.shared.open(URL(string: "https://www.youtube.com/watch?v=mRbCu4uizYc")!)
+                },
+                SettingsElementButton(id: "instagram", text: "instagram".localized()) { () in
+                    UIApplication.shared.open(URL(string: "https://www.instagram.com/nathanfallet/")!)
+                }
+            ]),
             SettingsSection(name: "Groupe MINASTE", elements: [
                 SettingsElementButton(id: "moreApps", text: "moreApps".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
@@ -52,26 +60,17 @@ class SettingsTableViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
     
-    func isDarkMode() -> Bool {
-        let datas = UserDefaults.standard
-        
-        if(datas.value(forKey: "isDarkMode") != nil){
-            return datas.value(forKey: "isDarkMode") as! Bool
-        }
-        return false
-    }
-    
-    @objc func darkModeEnabled(_ notification: Foundation.Notification) {
-        enableDarkMode()
+    @objc override func darkModeEnabled(_ notification: Foundation.Notification) {
+        super.darkModeEnabled(notification)
         self.tableView.reloadData()
     }
     
-    @objc func darkModeDisabled(_ notification: Foundation.Notification) {
-        disableDarkMode()
+    @objc override func darkModeDisabled(_ notification: Foundation.Notification) {
+        super.darkModeDisabled(notification)
         self.tableView.reloadData()
     }
     
-    open func enableDarkMode() {
+    @objc override func enableDarkMode() {
         self.view.backgroundColor = CustomColor.darkTableBackground
         self.tableView.backgroundColor = CustomColor.darkTableBackground
         self.tableView.separatorColor = CustomColor.darkSeparator
@@ -80,7 +79,7 @@ class SettingsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
     }
     
-    open func disableDarkMode() {
+    @objc override func disableDarkMode() {
         self.view.backgroundColor = CustomColor.lightTableBackground
         self.tableView.backgroundColor = CustomColor.lightTableBackground
         self.tableView.separatorColor = CustomColor.lightSeparator

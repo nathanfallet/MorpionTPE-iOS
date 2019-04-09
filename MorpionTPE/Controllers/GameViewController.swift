@@ -275,26 +275,8 @@ class GameViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func isDarkMode() -> Bool {
-        let datas = UserDefaults.standard
-        
-        if(datas.value(forKey: "isDarkMode") != nil){
-            return datas.value(forKey: "isDarkMode") as! Bool
-        }
-        return false
-    }
-    
-    @objc func darkModeEnabled(_ notification: Foundation.Notification) {
-        enableDarkMode()
-    }
-    
-    @objc func darkModeDisabled(_ notification: Foundation.Notification) {
-        disableDarkMode()
-    }
-    
-    open func enableDarkMode() {
-        self.view.backgroundColor = CustomColor.darkBackground
-        self.setNeedsStatusBarAppearanceUpdate()
+    @objc override func enableDarkMode() {
+        super.enableDarkMode()
         self.infos.textColor = CustomColor.darkText
         for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
             box.layer.borderWidth = 1
@@ -302,18 +284,13 @@ class GameViewController: UIViewController {
         }
     }
     
-    open func disableDarkMode() {
-        self.view.backgroundColor = CustomColor.lightBackground
-        self.setNeedsStatusBarAppearanceUpdate()
+    @objc override func disableDarkMode() {
+        super.disableDarkMode()
         self.infos.textColor = CustomColor.lightText
         for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
             box.layer.borderWidth = 1
             box.layer.borderColor = CustomColor.lightActive.cgColor
         }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return isDarkMode() ? .lightContent : .default
     }
 
 }

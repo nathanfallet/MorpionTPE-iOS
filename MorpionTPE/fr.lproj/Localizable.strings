@@ -26,5 +26,8 @@
 // Settings
 "pro" = "Fonctionnalités Tic TAI PRO";
 "isDarkMode" = "Activer le thème foncé";
+"about" = "Plus à propos de l'application";
+"video" = "Voir la vidéo du développement";
+"instagram" = "Suivre le développeur sur Instagram";
 "moreApps" = "Plus d'applications";
 "donate" = "Faire un don";

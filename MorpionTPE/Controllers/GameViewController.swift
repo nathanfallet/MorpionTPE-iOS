@@ -292,5 +292,9 @@ class GameViewController: UIViewController {
             box.layer.borderColor = CustomColor.lightActive.cgColor
         }
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isDarkMode() ? .lightContent : .default
+    }
 
 }

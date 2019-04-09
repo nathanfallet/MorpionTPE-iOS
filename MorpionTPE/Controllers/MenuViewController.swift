@@ -187,5 +187,9 @@ class MenuViewController: UIViewController {
         self.subname.textColor = CustomColor.lightText
         self.bottom.textColor = CustomColor.lightText
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isDarkMode() ? .lightContent : .default
+    }
 
 }

@@ -38,8 +38,4 @@ extension UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
-    var preferredStatusBarStyle: UIStatusBarStyle {
-        return isDarkMode() ? .lightContent : .default
-    }
-    
 }

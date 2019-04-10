@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import StoreKit
 
 class Game {
     
@@ -51,6 +52,17 @@ class Game {
         // The game ended
         current = .empty
         NotificationCenter.default.post(name: .boardChanged, object: nil)
+        
+        // Update game count
+        let datas = UserDefaults.standard
+        let numberOfGamesPlayed = datas.integer(forKey: "numberOfGamesPlayed") + 1
+        datas.set(numberOfGamesPlayed, forKey: "numberOfGamesPlayed")
+        datas.synchronize()
+        
+        // Ask the user to review the app
+        if numberOfGamesPlayed == 10 || numberOfGamesPlayed == 50 || numberOfGamesPlayed % 100 == 0 {
+            SKStoreReviewController.requestReview()
+        }
     }
     
     // Make a player plays in the board

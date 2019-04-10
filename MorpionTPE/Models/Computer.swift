@@ -12,8 +12,11 @@ class Computer: Player {
     
     // Override player play function
     override func play(game: Game, completion: @escaping (Int, Int) -> ()) {
+        let deadline: DispatchTime = .now() + 1
         let (x, y) = bestMove(game: game, table: game.table, sign: sign).0
-        completion(x, y)
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: deadline) {
+            completion(x, y)
+        }
     }
     
     // Select the best possibility of game

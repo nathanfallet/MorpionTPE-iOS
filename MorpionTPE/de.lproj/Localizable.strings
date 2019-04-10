@@ -6,9 +6,6 @@
   Copyright © 2019 Nathan FALLET. All rights reserved.
 */
 
-// TO BE TRANSLATED (remove this comment after translation)
-// Make a pull request when you're done
-
 // Menu
 "name" = "Tic TAI Toe";
 "subname" = "tic tac toe mit KI und PRO Funktionen";

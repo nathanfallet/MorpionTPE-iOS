@@ -36,9 +36,14 @@ class Game {
                 if player.sign == current {
                     // Here the player plays
                     player.play(game: self) { (x, y) in
+                        // Set the move
                         if self.play(x: x, y: y, sign: player.sign) {
                             self.current = self.current == .X ? .O : .X
                         }
+                        
+                        // Update UI
+                        NotificationCenter.default.post(name: .boardChanged, object: nil)
+                        
                         // And go to next move
                         self.nextMove()
                     }
@@ -69,7 +74,6 @@ class Game {
     func play(x: Int, y: Int, sign: Sign) -> Bool {
         if x >= 0 && x < 3 && y >= 0 && y < 3 && table[x][y] == .empty {
             table[x][y] = sign
-            NotificationCenter.default.post(name: .boardChanged, object: nil)
             return true
         }
         

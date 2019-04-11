@@ -57,6 +57,7 @@
 		6AAE01A6225BD1C800A4E2A4 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		6AAE01A8225BD1D400A4E2A4 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		6AAE01AA225BD3F900A4E2A4 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		6AE056EA225F1E940097D26C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +194,7 @@
 				fr,
 				es,
 				de,
+				ru,
 			);
 			mainGroup = 6AAE016C225B677400A4E2A4;
 			productRefGroup = 6AAE0176225B677400A4E2A4 /* Products */;
@@ -253,6 +255,7 @@
 				6A9606A9225D0F49001604D6 /* fr */,
 				6A9606AA225D1240001604D6 /* es */,
 				6A9606AD225D2958001604D6 /* de */,
+				6AE056EA225F1E940097D26C /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

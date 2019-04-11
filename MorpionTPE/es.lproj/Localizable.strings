@@ -7,7 +7,6 @@
 */
 
 // Menu
-"name" = "Tic TAI Toe";
 "subname" = "Tres en raya, con IA y PRO funcionalidades";
 "button1" = "Jugador VS Jugador";
 "button2" = "Jugador VS Ordenador";

@@ -51,7 +51,7 @@ class MenuViewController: UIViewController {
         name.centerXAnchor.constraint(equalTo: menu.centerXAnchor).isActive = true
         name.widthAnchor.constraint(equalToConstant: 300).isActive = true
         
-        name.text = "name".localized()
+        name.text = "Tic TAI Toe"
         name.font = UIFont.boldSystemFont(ofSize: 48)
         name.adjustsFontSizeToFitWidth = true
         name.textAlignment = .center

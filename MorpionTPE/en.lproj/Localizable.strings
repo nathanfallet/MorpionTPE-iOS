@@ -7,7 +7,6 @@
 */
 
 // Menu
-"name" = "Tic TAI Toe";
 "subname" = "A tic tac toe, with an AI and PRO features";
 "button1" = "Player VS Player";
 "button2" = "Player VS Computer";

@@ -7,7 +7,6 @@
 */
 
 // Menu
-"name" = "Tic TAI Toe";
 "subname" = "Un Morpion, avec une IA et des fonctionnalités PRO";
 "button1" = "Joueur VS Joueur";
 "button2" = "Joueur VS Ordinateur";

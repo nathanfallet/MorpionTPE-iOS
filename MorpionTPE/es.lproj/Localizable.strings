@@ -21,10 +21,15 @@
 "ended_computer" = "¡Juego terminado!\nGanador: Ordenador (%@)";
 "ended_human" = "¡Juego terminado!\nGanador: Jugador %@";
 "ended_empty" = "¡Juego terminado!\nEmpate";
+"unlocked_title" = "¡Has desbloquada una PRO funcionalidad!";
+"unlocked_darkmode" = "Ahora puede activar el modo oscuro en los ajustes";
+"unlocked_hardcore" = "Ahora puede activar el modo hardcore en los ajustes";
 
 // Settings
 "pro" = "Tic TAI PRO funcionalidades";
+"no_pro" = "Juega para desbloquear PRO funcionalidades";
 "isDarkMode" = "Activar el modo oscuro";
+"isHardcode" = "Activar el modo hardcode";
 "about" = "Más sobre la aplicación";
 "video" = "Ver el video del desarrollo";
 "instagram" = "Seguir el desarrollador en Instagram";

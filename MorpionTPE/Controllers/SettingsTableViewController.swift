@@ -31,11 +31,26 @@ class SettingsTableViewController: UITableViewController {
         // Init colors
         isDarkMode() ? enableDarkMode() : disableDarkMode()
         
+        // Check if PRO features are available
+        let datas = UserDefaults.standard
+        let darkmodeUnlocked = datas.bool(forKey: "darkmodeUnlocked")
+        let hardcoreUnlocked = datas.bool(forKey: "hardcoreUnlocked")
+        
+        // Create PRO section and add elements
+        let pro = SettingsSection(name: "pro".localized(), elements: [])
+        if darkmodeUnlocked {
+            pro.elements += [SettingsElementSwitch(id: "isDarkMode", text: "isDarkMode".localized(), d: false)]
+        }
+        if hardcoreUnlocked {
+            pro.elements += [SettingsElementSwitch(id: "isHardcore", text: "isHardcore".localized(), d: false)]
+        }
+        if pro.elements.count == 0 {
+            pro.elements += [SettingsElementLabel(id: "no_pro", text: "no_pro".localized())]
+        }
+        
         // Load content
         sections += [
-            SettingsSection(name: "pro".localized(), elements: [
-                SettingsElementSwitch(id: "isDarkMode", text: "isDarkMode".localized(), d: false)
-            ]),
+            pro,
             SettingsSection(name: "about".localized(), elements: [
                 SettingsElementButton(id: "video", text: "video".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://www.youtube.com/watch?v=mRbCu4uizYc")!)

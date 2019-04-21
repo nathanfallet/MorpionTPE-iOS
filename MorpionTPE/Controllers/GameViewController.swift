@@ -163,6 +163,7 @@ class GameViewController: UIViewController {
         infos.font = UIFont.boldSystemFont(ofSize: 26)
         infos.numberOfLines = 2
         infos.textAlignment = .center
+        infos.adjustsFontSizeToFitWidth = true
         
         // Setup back
         back.translatesAutoresizingMaskIntoConstraints = false
@@ -266,7 +267,9 @@ class GameViewController: UIViewController {
                 let y = img.tag / 3
                 
                 // Play!
-                human.completion?(x, y)
+                DispatchQueue.global(qos: .background).async {
+                    human.completion?(x, y)
+                }
             }
         }
     }

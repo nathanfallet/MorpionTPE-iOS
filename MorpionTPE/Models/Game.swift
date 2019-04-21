@@ -64,6 +64,34 @@ class Game {
         datas.set(numberOfGamesPlayed, forKey: "numberOfGamesPlayed")
         datas.synchronize()
         
+        // Check for new PRO features
+        let darkmodeUnlocked = datas.bool(forKey: "darkmodeUnlocked")
+        let hardcoreUnlocked = datas.bool(forKey: "hardcoreUnlocked")
+        
+        // Check for darkmode
+        if !darkmodeUnlocked && numberOfGamesPlayed >= 5 {
+            // Show alert
+            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_darkmode".localized(), preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            
+            // Save that the feature is unlocked
+            datas.set(true, forKey: "darkmodeUnlocked")
+            datas.synchronize()
+        }
+        
+        // Check for hardcore
+        if !hardcoreUnlocked && ((player1 as? Human != nil && player2 as? Computer != nil && win == player1.sign) || (player1 as? Computer != nil && player2 as? Human != nil && win == player2.sign)) {
+            // Show alert
+            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_hardcore".localized(), preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                
+            // Save that the feature is unlocked
+            datas.set(true, forKey: "hardcoreUnlocked")
+            datas.synchronize()
+        }
+        
         // Ask the user to review the app
         if numberOfGamesPlayed == 10 || numberOfGamesPlayed == 50 || numberOfGamesPlayed % 100 == 0 {
             SKStoreReviewController.requestReview()

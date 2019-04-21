@@ -29,7 +29,7 @@
 "pro" = "Tic TAI PRO funcionalidades";
 "no_pro" = "Juega para desbloquear PRO funcionalidades";
 "isDarkMode" = "Activar el modo oscuro";
-"isHardcode" = "Activar el modo hardcode";
+"isHardcore" = "Activar el modo hardcore";
 "about" = "Más sobre la aplicación";
 "video" = "Ver el video del desarrollo";
 "instagram" = "Seguir el desarrollador en Instagram";

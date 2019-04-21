@@ -23,13 +23,13 @@
 "ended_empty" = "Partie terminée !\nMatch nul";
 "unlocked_title" = "Vous avez débloqué une fonctionnalité PRO !";
 "unlocked_darkmode" = "Vous pouvez maintenant activer le thème foncé dans les paramètres";
-"unlocked_hardcore" = "Vous pouvez maintenant activer le mode hardcode foncé dans les paramètres";
+"unlocked_hardcore" = "Vous pouvez maintenant activer le mode hardcore dans les paramètres";
 
 // Settings
 "pro" = "Fonctionnalités Tic TAI PRO";
 "no_pro" = "Jouez pour débloquer des fonctionalités PRO";
 "isDarkMode" = "Activer le thème foncé";
-"isHardcode" = "Activer le mode hardcore";
+"isHardcore" = "Activer le mode hardcore";
 "about" = "Plus à propos de l'application";
 "video" = "Voir la vidéo du développement";
 "instagram" = "Suivre le développeur sur Instagram";

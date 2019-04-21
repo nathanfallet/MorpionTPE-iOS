@@ -39,6 +39,8 @@ class GameViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(boardChanged(_:)), name: .boardChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkmodeUnlocked(_:)), name: .darkmodeUnlocked, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hardcoreUnlocked(_:)), name: .hardcoreUnlocked, object: nil)
         
         // Init colors
         isDarkMode() ? enableDarkMode() : disableDarkMode()
@@ -193,6 +195,8 @@ class GameViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: .boardChanged, object: nil)
         NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkmodeUnlocked, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .hardcoreUnlocked, object: nil)
     }
     
     @objc func boardChanged(_ sender: Any) {
@@ -298,6 +302,22 @@ class GameViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return isDarkMode() ? .lightContent : .default
+    }
+    
+    @objc func darkmodeUnlocked(_ sender: Any) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_darkmode".localized(), preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func hardcoreUnlocked(_ sender: Any) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_hardcore".localized(), preferredStyle: .alert)
+            alert.addAction(.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
 }

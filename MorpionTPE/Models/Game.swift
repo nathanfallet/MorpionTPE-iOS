@@ -70,26 +70,22 @@ class Game {
         
         // Check for darkmode
         if !darkmodeUnlocked && numberOfGamesPlayed >= 5 {
-            // Show alert
-            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_darkmode".localized(), preferredStyle: .alert)
-            alert.addAction(.init(title: "OK", style: .default, handler: nil))
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-            
             // Save that the feature is unlocked
             datas.set(true, forKey: "darkmodeUnlocked")
             datas.synchronize()
+            
+            // And show alert
+            NotificationCenter.default.post(name: .darkmodeUnlocked, object: nil)
         }
         
         // Check for hardcore
         if !hardcoreUnlocked && ((player1 as? Human != nil && player2 as? Computer != nil && win == player1.sign) || (player1 as? Computer != nil && player2 as? Human != nil && win == player2.sign)) {
-            // Show alert
-            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_hardcore".localized(), preferredStyle: .alert)
-            alert.addAction(.init(title: "OK", style: .default, handler: nil))
-            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-                
             // Save that the feature is unlocked
             datas.set(true, forKey: "hardcoreUnlocked")
             datas.synchronize()
+            
+            // And show alert
+            NotificationCenter.default.post(name: .hardcoreUnlocked, object: nil)
         }
         
         // Ask the user to review the app

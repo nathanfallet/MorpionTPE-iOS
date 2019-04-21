@@ -21,15 +21,15 @@
 "ended_computer" = "Игра закончена!\nПобедитель: Компьютер (%@)";
 "ended_human" = "Игра закончена!\nПобедитель: Игрок %@";
 "ended_empty" = "Игра закончена!\nНичья";
-"unlocked_title" = "You unlocked a PRO feature!";
-"unlocked_darkmode" = "You can now enable dark mode in settings";
-"unlocked_hardcore" = "You can now enable hardcode in settings";
+"unlocked_title" = "Вы открыли дополнительные возможности!";
+"unlocked_darkmode" = "Теперь вы можете активировать тёмную тему в настройках";
+"unlocked_hardcore" = "Теперь вы можете включить режим Хардкор в настройках";
 
 // Settings (translation - Настройки)
 "pro" = "Особенности Tic TAI PRO";
-"no_pro" = "Play to unlock PRO features";
-"isDarkMode" = "Тёмный режим";
-"isHardcode" = "Enable hardcode";
+"no_pro" = "Играйте больше, чтобы открыть дополнительные возможности";
+"isDarkMode" = "Тёмная тема";
+"isHardcode" = "Активировать Хардкор";
 "about" = "Подробнее о приложении";
 "video" = "Посмотреть видео разработки";
 "instagram" = "Подписаться на создателя в Instagram";

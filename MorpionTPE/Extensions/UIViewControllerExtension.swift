@@ -13,11 +13,7 @@ extension UIViewController {
     
     func isDarkMode() -> Bool {
         let datas = UserDefaults.standard
-        
-        if(datas.value(forKey: "isDarkMode") != nil){
-            return datas.value(forKey: "isDarkMode") as! Bool
-        }
-        return false
+        return datas.bool(forKey: "isDarkMode")
     }
     
     @objc func darkModeEnabled(_ notification: Foundation.Notification) {

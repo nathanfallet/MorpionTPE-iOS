@@ -130,8 +130,8 @@ class SettingsTableViewController: UITableViewController {
             let datas = UserDefaults.standard
             var enabled = e.d
             
-            if(datas.value(forKey: e.id) != nil){
-                enabled = datas.value(forKey: e.id) as! Bool
+            if datas.value(forKey: e.id) != nil {
+                enabled = datas.bool(forKey: e.id)
             }
             
             return (tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchTableViewCell).with(id: e.id, text: e.text, preference: true, enabled: enabled, darkMode: isDarkMode())

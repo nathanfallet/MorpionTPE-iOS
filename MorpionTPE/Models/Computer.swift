@@ -72,8 +72,16 @@ class Computer: Player {
         
         // We suffle the moves
         moves.shuffle()
-        moves.sort {
-            return $0.1 > $1.1
+        
+        // Check if hardcore is enable
+        let datas = UserDefaults.standard
+        let isHardcore = datas.bool(forKey: "isHardcore")
+        
+        // If enabled, sort moves by score
+        if isHardcore {
+            moves.sort {
+                return $0.1 > $1.1
+            }
         }
         
         // Return the best move

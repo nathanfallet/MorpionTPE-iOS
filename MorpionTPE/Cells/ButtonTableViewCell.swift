@@ -26,6 +26,7 @@ class ButtonTableViewCell: UITableViewCell {
         button.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true
         button.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
     }
     

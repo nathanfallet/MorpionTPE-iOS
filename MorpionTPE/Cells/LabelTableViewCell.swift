@@ -25,6 +25,7 @@ class LabelTableViewCell: UITableViewCell {
         label.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true
         label.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         label.font = UIFont.systemFont(ofSize: 17)
+        label.adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder aDecoder: NSCoder) {

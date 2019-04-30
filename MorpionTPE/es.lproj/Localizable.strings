@@ -15,6 +15,7 @@
 "bottom" = "App hecha por Nathan Fallet\n© Groupe MINASTE";
 
 // Game
+"again" = "Jugar de nuevo";
 "back" = "Volver al menú";
 "playing_computer" = "Juego en proceso:\n¡Es el turno del ordenador (%@)!";
 "playing_human" = "Juego en proceso:\n¡Es el turno del jugador %@!";

@@ -15,6 +15,7 @@
 "bottom" = "App wurde von Nathan Fallet entwickelt\n© Groupe MINASTE";
 
 // Game
+"again" = "Wieder spielen";
 "back" = "Zurück zum Menü";
 "playing_computer" = "Spiel läuft:\nComputer (%@) ist am Zug!";
 "playing_human" = "Spiel läuft:\n Spieler %@ ist am Zug!";

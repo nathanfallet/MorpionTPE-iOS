@@ -15,6 +15,7 @@
 "bottom" = "App made by Nathan Fallet\n© Groupe MINASTE";
 
 // Game
+"again" = "Play again";
 "back" = "Go back to menu";
 "playing_computer" = "Game is playing:\nComputer (%@), it's to you!";
 "playing_human" = "Game is playing:\nPlayer %@, it's to you!";

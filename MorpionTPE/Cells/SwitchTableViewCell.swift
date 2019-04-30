@@ -28,6 +28,7 @@ class SwitchTableViewCell: UITableViewCell {
         label.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true
         label.font = UIFont.systemFont(ofSize: 17)
+        label.adjustsFontSizeToFitWidth = true
         
         switchElement.translatesAutoresizingMaskIntoConstraints = false
         switchElement.centerYAnchor.constraint(equalTo: contentView.layoutMarginsGuide.centerYAnchor).isActive = true

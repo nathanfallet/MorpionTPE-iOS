@@ -15,6 +15,7 @@
 "bottom" = "App créé par Nathan Fallet\n© Groupe MINASTE";
 
 // Game
+"again" = "Rejouer";
 "back" = "Retour au menu";
 "playing_computer" = "Partie en cours :\nC'est au tour de l'ordinateur (%@) !";
 "playing_human" = "Partie en cours :\nC'est au tour du joueur %@ !";

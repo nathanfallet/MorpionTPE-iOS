@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    let game: Game
+    var game: Game
     let box1 = UIImageView()
     let box2 = UIImageView()
     let box3 = UIImageView()
@@ -21,6 +21,7 @@ class GameViewController: UIViewController {
     let box8 = UIImageView()
     let box9 = UIImageView()
     let infos = UILabel()
+    let again = UIButton()
     let back = UIButton()
     
     init(game: Game) {
@@ -56,6 +57,7 @@ class GameViewController: UIViewController {
         view.addSubview(box8)
         view.addSubview(box9)
         view.addSubview(infos)
+        view.addSubview(again)
         view.addSubview(back)
         
         // Setup box 1
@@ -95,7 +97,7 @@ class GameViewController: UIViewController {
         box4.translatesAutoresizingMaskIntoConstraints = false
         box4.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
         box4.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
-        box4.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor).isActive = true
+        box4.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -20).isActive = true
         box4.rightAnchor.constraint(equalTo: box5.leftAnchor).isActive = true
         
         box4.tag = 3
@@ -107,7 +109,7 @@ class GameViewController: UIViewController {
         box5.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
         box5.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
         box5.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
-        box5.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor).isActive = true
+        box5.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -20).isActive = true
         
         box5.tag = 4
         box5.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(clickOnImage(_:))))
@@ -117,7 +119,7 @@ class GameViewController: UIViewController {
         box6.translatesAutoresizingMaskIntoConstraints = false
         box6.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
         box6.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 1/3).isActive = true
-        box6.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor).isActive = true
+        box6.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -20).isActive = true
         box6.leftAnchor.constraint(equalTo: box5.rightAnchor).isActive = true
         
         box6.tag = 5
@@ -160,17 +162,32 @@ class GameViewController: UIViewController {
         // Setup infos
         infos.translatesAutoresizingMaskIntoConstraints = false
         infos.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
-        infos.bottomAnchor.constraint(equalTo: box2.topAnchor, constant: -50).isActive = true
+        infos.bottomAnchor.constraint(equalTo: box2.topAnchor, constant: -30).isActive = true
         
         infos.font = UIFont.boldSystemFont(ofSize: 26)
         infos.numberOfLines = 2
         infos.textAlignment = .center
         infos.adjustsFontSizeToFitWidth = true
         
+        // Setup again
+        again.translatesAutoresizingMaskIntoConstraints = false
+        again.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
+        again.topAnchor.constraint(equalTo: box8.bottomAnchor, constant: 30).isActive = true
+        again.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        again.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        again.layer.cornerRadius = 4
+        again.clipsToBounds = true
+        
+        again.setTitle("again".localized(), for: .normal)
+        again.setTitleColor(.white, for: .normal)
+        again.backgroundColor = CustomColor.darkActive
+        again.addTarget(self, action: #selector(again(_:)), for: .touchUpInside)
+        
         // Setup back
         back.translatesAutoresizingMaskIntoConstraints = false
         back.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor).isActive = true
-        back.topAnchor.constraint(equalTo: box8.bottomAnchor, constant: 50).isActive = true
+        back.topAnchor.constraint(equalTo: again.bottomAnchor, constant: 20).isActive = true
         back.widthAnchor.constraint(equalToConstant: 300).isActive = true
         back.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -221,6 +238,7 @@ class GameViewController: UIViewController {
                 } else {
                     self.infos.text = "playing_human".localized().format("\(self.game.current)")
                 }
+                self.again.isHidden = true
                 self.back.isHidden = true
             } else {
                 // Game has ended
@@ -240,6 +258,7 @@ class GameViewController: UIViewController {
                 } else {
                     self.infos.text = "ended_empty".localized()
                 }
+                self.again.isHidden = false
                 self.back.isHidden = false
             }
             
@@ -275,6 +294,17 @@ class GameViewController: UIViewController {
                     human.completion?(x, y)
                 }
             }
+        }
+    }
+    
+    @objc func again(_ sender: UIButton) {
+        // Create a new game with same players
+        self.game = Game(player1: game.player1, player2: game.player2)
+        updateUI()
+        
+        // And start it
+        DispatchQueue.global(qos: .background).async {
+            self.game.nextMove()
         }
     }
     

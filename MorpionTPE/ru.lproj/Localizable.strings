@@ -15,6 +15,7 @@
 "bottom" = "Приложение сделал Nathan Fallet\n© Groupe MINASTE";
 
 // Game
+"again" = "снова играть";
 "back" = "Вернуться в меню";
 "playing_computer" = "Игра продолжается:\nКомпьютер (%@), твой ход!";
 "playing_human" = "Игра продолжается:\nИгрок %@, твой ход!";

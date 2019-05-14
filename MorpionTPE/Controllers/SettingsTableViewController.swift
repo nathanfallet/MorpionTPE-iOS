@@ -62,9 +62,6 @@ class SettingsTableViewController: UITableViewController {
             SettingsSection(name: "Groupe MINASTE", elements: [
                 SettingsElementButton(id: "moreApps", text: "moreApps".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
-                },
-                SettingsElementButton(id: "donate", text: "donate".localized()) { () in
-                    UIApplication.shared.open(URL(string: "https://www.paypal.me/NathanFallet")!)
                 }
             ])
         ]

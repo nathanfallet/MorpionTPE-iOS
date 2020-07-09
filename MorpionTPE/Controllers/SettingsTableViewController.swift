@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DonateViewController
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, DonateViewControllerDelegate {
     
     var sections = [SettingsSection]()
     
@@ -62,6 +63,20 @@ class SettingsTableViewController: UITableViewController {
             SettingsSection(name: "Groupe MINASTE", elements: [
                 SettingsElementButton(id: "moreApps", text: "moreApps".localized()) { () in
                     UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
+                },
+                SettingsElementButton(id: "donate", text: "donate_title".localized()) { () in
+                    let controller = DonateViewController()
+                    
+                    controller.title = "donate_title".localized()
+                    controller.header = "donate_header".localized()
+                    controller.footer = "donate_footer".localized()
+                    controller.delegate = self
+                    
+                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation1")
+                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation2")
+                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation3")
+                    
+                    self.navigationController?.pushViewController(controller, animated: true)
                 }
             ])
         ]
@@ -141,6 +156,16 @@ class SettingsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func donateViewController(_ controller: DonateViewController, didDonationSucceed donation: Donation) {
+        let alert = UIAlertController(title: "donate_thanks".localized(), message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "back".localized(), style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func donateViewController(_ controller: DonateViewController, didDonationFailed donation: Donation) {
+        print("Donation failed.")
     }
 
 }

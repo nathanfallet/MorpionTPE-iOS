@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A61A50724B7C42F00363F25 /* DonateViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 6A61A50624B7C42F00363F25 /* DonateViewController */; };
 		6A9606A4225D0B4B001604D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A9606A6225D0B4B001604D6 /* Localizable.strings */; };
 		6A9606A8225D0B63001604D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9606A7225D0B63001604D6 /* StringExtension.swift */; };
 		6A9606AC225D1F25001604D6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9606AB225D1F25001604D6 /* UIViewControllerExtension.swift */; };
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A61A50724B7C42F00363F25 /* DonateViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,9 @@
 			dependencies = (
 			);
 			name = MorpionTPE;
+			packageProductDependencies = (
+				6A61A50624B7C42F00363F25 /* DonateViewController */,
+			);
 			productName = MorpionTPE;
 			productReference = 6AAE0175225B677400A4E2A4 /* MorpionTPE.app */;
 			productType = "com.apple.product-type.application";
@@ -197,6 +202,9 @@
 				ru,
 			);
 			mainGroup = 6AAE016C225B677400A4E2A4;
+			packageReferences = (
+				6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */,
+			);
 			productRefGroup = 6AAE0176225B677400A4E2A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -394,6 +402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = ZL9396WK65;
 				INFOPLIST_FILE = MorpionTPE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -401,6 +410,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = me.nathanfallet.MorpionTPE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -413,6 +423,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = ZL9396WK65;
 				INFOPLIST_FILE = MorpionTPE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -420,6 +431,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = me.nathanfallet.MorpionTPE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -449,6 +461,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GroupeMINASTE/DonateViewController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6A61A50624B7C42F00363F25 /* DonateViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */;
+			productName = DonateViewController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6AAE016D225B677400A4E2A4 /* Project object */;
 }

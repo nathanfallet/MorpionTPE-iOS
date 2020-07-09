@@ -165,12 +165,14 @@ class MenuViewController: UIViewController {
         }
         
         let gameVC = GameViewController(game: game)
+        gameVC.modalPresentationStyle = .fullScreen
         
         present(gameVC, animated: true, completion: nil)
     }
     
     @objc func openSettings(_ sender: UIButton) {
         let settingsVC = UINavigationController(rootViewController: SettingsTableViewController(style: .grouped))
+        settingsVC.modalPresentationStyle = .fullScreen
         
         present(settingsVC, animated: true, completion: nil)
     }

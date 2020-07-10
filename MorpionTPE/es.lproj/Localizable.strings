@@ -13,7 +13,6 @@
 "button3" = "Ordenador VS Ordenador";
 "settings" = "Ajustes";
 "bottom" = "App hecha por Nathan Fallet\n© Groupe MINASTE";
-
 // Game
 "again" = "Jugar de nuevo";
 "back" = "Volver al menú";
@@ -25,7 +24,6 @@
 "unlocked_title" = "¡Ha desbloqueado una PRO funcionalidad!";
 "unlocked_darkmode" = "Ahora puede activar el modo oscuro en los ajustes";
 "unlocked_hardcore" = "Ahora puede activar el modo hardcore en los ajustes";
-
 // Settings
 "pro" = "Tic TAI PRO funcionalidades";
 "no_pro" = "Juega para desbloquear PRO funcionalidades";
@@ -35,3 +33,7 @@
 "video" = "Ver el video del desarrollo";
 "instagram" = "Seguir el desarrollador en Instagram";
 "moreApps" = "Más aplicaciones";
+"donate_thanks" = "¡Gracias por tu donación para nuestra organización!";
+"donate_footer" = "Esta donación ayuda nuestra organización para desarrollar sus proyectos, principalmente Extopy, la red social que somos desarrollando, que necesitara almacenamiento para sus servidores.";
+"donate_header" = "Elige cuanto quiere donar:";
+"donate_title" = "Hacer una donación";

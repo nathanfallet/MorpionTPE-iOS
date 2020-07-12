@@ -34,3 +34,6 @@
 "instagram" = "Folge dem Entwickler auf Instagram";
 "moreApps" = "Mehr Apps";
 "donate_title" = "Spenden";
+"donate_thanks" = "Danke für ihre Spende zu unsere Organisation!";
+"donate_header" = "Wählen Sie ein Betrag für ihre Spende:";
+"donate_footer" = "Diese Spende wird unserem Organisation helfen, seinen Projekte zu entwickeln, insbesondere Extopy, das soziale Netzwerk, das wir entwickeln und das hauptsächlich Speicher auf seinen Servern benötigt.";

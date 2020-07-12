@@ -9,7 +9,7 @@
 import UIKit
 import DonateViewController
 
-class SettingsTableViewController: UITableViewController, DonateViewControllerDelegate {
+class SettingsTableViewController: UITableViewController {
     
     var sections = [SettingsSection]()
     
@@ -65,18 +65,7 @@ class SettingsTableViewController: UITableViewController, DonateViewControllerDe
                     UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
                 },
                 SettingsElementButton(id: "donate", text: "donate_title".localized()) { () in
-                    let controller = DonateViewController()
-                    
-                    controller.title = "donate_title".localized()
-                    controller.header = "donate_header".localized()
-                    controller.footer = "donate_footer".localized()
-                    controller.delegate = self
-                    
-                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation1")
-                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation2")
-                    controller.add(identifier: "me.nathanfallet.MorpionTPE.donation3")
-                    
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.navigationController?.pushViewController(CustomDonateViewController(), animated: true)
                 }
             ])
         ]
@@ -102,8 +91,9 @@ class SettingsTableViewController: UITableViewController, DonateViewControllerDe
         self.tableView.backgroundColor = CustomColor.darkTableBackground
         self.tableView.separatorColor = CustomColor.darkSeparator
         self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.view.backgroundColor = CustomColor.darkBackground
+        self.navigationController?.navigationBar.barTintColor = CustomColor.darkBackground
         self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: CustomColor.darkText]
     }
     
     @objc override func disableDarkMode() {
@@ -111,8 +101,9 @@ class SettingsTableViewController: UITableViewController, DonateViewControllerDe
         self.tableView.backgroundColor = CustomColor.lightTableBackground
         self.tableView.separatorColor = CustomColor.lightSeparator
         self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.view.backgroundColor = CustomColor.lightBackground
+        self.navigationController?.navigationBar.barTintColor = CustomColor.lightBackground
         self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: CustomColor.lightText]
     }
     
     @objc func dismiss(_ sender: UIBarButtonItem) {
@@ -156,16 +147,6 @@ class SettingsTableViewController: UITableViewController, DonateViewControllerDe
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
-    }
-    
-    func donateViewController(_ controller: DonateViewController, didDonationSucceed donation: Donation) {
-        let alert = UIAlertController(title: "donate_thanks".localized(), message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "back".localized(), style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func donateViewController(_ controller: DonateViewController, didDonationFailed donation: Donation) {
-        print("Donation failed.")
     }
 
 }

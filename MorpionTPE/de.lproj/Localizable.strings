@@ -13,7 +13,6 @@
 "button3" = "Computer vs. Computer";
 "settings" = "Einstellungen";
 "bottom" = "App wurde von Nathan Fallet entwickelt\n© Groupe MINASTE";
-
 // Game
 "again" = "Wieder spielen";
 "back" = "Zurück zum Menü";
@@ -25,7 +24,6 @@
 "unlocked_title" = "Du hast eine PRO Funktion freigeschaltet!";
 "unlocked_darkmode" = "Sie können nun den Dunkelmodus in den Einstellungen aktivieren";
 "unlocked_hardcore" = "Sie können nun den Hardcore-Modus in den Einstellungen aktivieren";
-
 // Settings
 "pro" = "Tic TAI PRO Funktionen";
 "no_pro" = "Spielen Sie, um PRO Funktionen freizuschalten";
@@ -35,3 +33,4 @@
 "video" = "Video zur Entwicklung dieses Spiels";
 "instagram" = "Folge dem Entwickler auf Instagram";
 "moreApps" = "Mehr Apps";
+"donate_title" = "Spenden";

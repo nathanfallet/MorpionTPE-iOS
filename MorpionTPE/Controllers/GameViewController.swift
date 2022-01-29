@@ -38,13 +38,18 @@ class GameViewController: UIViewController {
         
         // Register for notifications
         NotificationCenter.default.addObserver(self, selector: #selector(boardChanged(_:)), name: .boardChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkmodeUnlocked(_:)), name: .darkmodeUnlocked, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hardcoreUnlocked(_:)), name: .hardcoreUnlocked, object: nil)
         
         // Init colors
-        isDarkMode() ? enableDarkMode() : disableDarkMode()
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
+        for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
+            box.layer.borderWidth = 1
+            box.layer.borderColor = CustomColor.darkActive.cgColor
+        }
         
         // Add elements to view
         view.addSubview(box1)
@@ -210,9 +215,6 @@ class GameViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: .boardChanged, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkmodeUnlocked, object: nil)
         NotificationCenter.default.removeObserver(self, name: .hardcoreUnlocked, object: nil)
     }
     
@@ -310,36 +312,6 @@ class GameViewController: UIViewController {
     
     @objc func back(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    @objc override func enableDarkMode() {
-        super.enableDarkMode()
-        self.infos.textColor = CustomColor.darkText
-        for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
-            box.layer.borderWidth = 1
-            box.layer.borderColor = CustomColor.darkActive.cgColor
-        }
-    }
-    
-    @objc override func disableDarkMode() {
-        super.disableDarkMode()
-        self.infos.textColor = CustomColor.lightText
-        for box in [box1, box2, box3, box4, box5, box6, box7, box8, box9] {
-            box.layer.borderWidth = 1
-            box.layer.borderColor = CustomColor.lightActive.cgColor
-        }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return isDarkMode() ? .lightContent : .default
-    }
-    
-    @objc func darkmodeUnlocked(_ sender: Any) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "unlocked_title".localized(), message: "unlocked_darkmode".localized(), preferredStyle: .alert)
-            alert.addAction(.init(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
     }
     
     @objc func hardcoreUnlocked(_ sender: Any) {

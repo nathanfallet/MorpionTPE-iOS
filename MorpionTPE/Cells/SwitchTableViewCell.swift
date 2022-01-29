@@ -41,19 +41,12 @@ class SwitchTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func with(id: String = "", text: String, preference: Bool = false, enabled: Bool, darkMode: Bool) -> SwitchTableViewCell {
+    func with(id: String = "", text: String, preference: Bool = false, enabled: Bool) -> SwitchTableViewCell {
         self.id = id
         self.preference = preference
         label.text = text
         switchElement.isOn = enabled
-        
-        if darkMode {
-            backgroundColor = CustomColor.darkBackground
-            label.textColor = CustomColor.darkText
-        } else {
-            backgroundColor = CustomColor.lightBackground
-            label.textColor = CustomColor.lightText
-        }
+
         return self
     }
     
@@ -62,10 +55,6 @@ class SwitchTableViewCell: UITableViewCell {
             let datas = UserDefaults.standard
             datas.set(switchElement.isOn, forKey: id)
             datas.synchronize()
-            
-            if id == "isDarkMode" {
-                NotificationCenter.default.post(name: switchElement.isOn ? .darkModeEnabled : .darkModeDisabled, object: nil)
-            }
         }
     }
 

@@ -32,17 +32,10 @@ class LabelTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func with(text: String, accessory: UITableViewCell.AccessoryType = .none, darkMode: Bool) -> LabelTableViewCell {
+    func with(text: String, accessory: UITableViewCell.AccessoryType = .none) -> LabelTableViewCell {
         label.text = text
         accessoryType = accessory
         
-        if darkMode {
-            backgroundColor = CustomColor.darkBackground
-            label.textColor = CustomColor.darkText
-        } else {
-            backgroundColor = CustomColor.lightBackground
-            label.textColor = CustomColor.lightText
-        }
         return self
     }
 

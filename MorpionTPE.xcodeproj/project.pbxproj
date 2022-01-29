@@ -10,7 +10,7 @@
 		6A61A50724B7C42F00363F25 /* DonateViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 6A61A50624B7C42F00363F25 /* DonateViewController */; };
 		6A9606A4225D0B4B001604D6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A9606A6225D0B4B001604D6 /* Localizable.strings */; };
 		6A9606A8225D0B63001604D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9606A7225D0B63001604D6 /* StringExtension.swift */; };
-		6A9606AC225D1F25001604D6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9606AB225D1F25001604D6 /* UIViewControllerExtension.swift */; };
+		6AA1778C27A5DA4900775DEC /* MyAppsiOS in Frameworks */ = {isa = PBXBuildFile; productRef = 6AA1778B27A5DA4900775DEC /* MyAppsiOS */; };
 		6AAE0179225B677400A4E2A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE0178225B677400A4E2A4 /* AppDelegate.swift */; };
 		6AAE0180225B677700A4E2A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE017F225B677700A4E2A4 /* Assets.xcassets */; };
 		6AAE0183225B677700A4E2A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE0181225B677700A4E2A4 /* LaunchScreen.storyboard */; };
@@ -30,7 +30,6 @@
 		6AAE01A9225BD1D400A4E2A4 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE01A8225BD1D400A4E2A4 /* SwitchTableViewCell.swift */; };
 		6AAE01AB225BD3F900A4E2A4 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE01AA225BD3F900A4E2A4 /* CustomColor.swift */; };
 		6AB147DE24BAFCB1005077F3 /* CustomDonateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB147DD24BAFCB1005077F3 /* CustomDonateViewController.swift */; };
-		6AB147E024BAFDE0005077F3 /* ThemedDonateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB147DF24BAFDE0005077F3 /* ThemedDonateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 		6A9606A7225D0B63001604D6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6A9606A9225D0F49001604D6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A9606AA225D1240001604D6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6A9606AB225D1F25001604D6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		6A9606AD225D2958001604D6 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AAE0175225B677400A4E2A4 /* MorpionTPE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorpionTPE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AAE0178225B677400A4E2A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 		6AAE01A8225BD1D400A4E2A4 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		6AAE01AA225BD3F900A4E2A4 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		6AB147DD24BAFCB1005077F3 /* CustomDonateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDonateViewController.swift; sourceTree = "<group>"; };
-		6AB147DF24BAFDE0005077F3 /* ThemedDonateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedDonateTableViewCell.swift; sourceTree = "<group>"; };
 		6AE056EA225F1E940097D26C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AA1778C27A5DA4900775DEC /* MyAppsiOS in Frameworks */,
 				6A61A50724B7C42F00363F25 /* DonateViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,7 +138,6 @@
 			children = (
 				6AAE019B225B8AD100A4E2A4 /* NotificationNameExtension.swift */,
 				6A9606A7225D0B63001604D6 /* StringExtension.swift */,
-				6A9606AB225D1F25001604D6 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,7 +148,6 @@
 				6AAE01A6225BD1C800A4E2A4 /* ButtonTableViewCell.swift */,
 				6AAE01A4225BD1BC00A4E2A4 /* LabelTableViewCell.swift */,
 				6AAE01A8225BD1D400A4E2A4 /* SwitchTableViewCell.swift */,
-				6AB147DF24BAFDE0005077F3 /* ThemedDonateTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -174,6 +170,7 @@
 			name = MorpionTPE;
 			packageProductDependencies = (
 				6A61A50624B7C42F00363F25 /* DonateViewController */,
+				6AA1778B27A5DA4900775DEC /* MyAppsiOS */,
 			);
 			productName = MorpionTPE;
 			productReference = 6AAE0175225B677400A4E2A4 /* MorpionTPE.app */;
@@ -210,6 +207,7 @@
 			mainGroup = 6AAE016C225B677400A4E2A4;
 			packageReferences = (
 				6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */,
+				6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */,
 			);
 			productRefGroup = 6AAE0176225B677400A4E2A4 /* Products */;
 			projectDirPath = "";
@@ -240,7 +238,6 @@
 			files = (
 				6AAE019C225B8AD100A4E2A4 /* NotificationNameExtension.swift in Sources */,
 				6AAE0197225B7DFF00A4E2A4 /* GameViewController.swift in Sources */,
-				6A9606AC225D1F25001604D6 /* UIViewControllerExtension.swift in Sources */,
 				6AAE01A9225BD1D400A4E2A4 /* SwitchTableViewCell.swift in Sources */,
 				6AAE0195225B789E00A4E2A4 /* Computer.swift in Sources */,
 				6AAE01A0225BC7B600A4E2A4 /* SettingsSection.swift in Sources */,
@@ -257,7 +254,6 @@
 				6AAE01A5225BD1BC00A4E2A4 /* LabelTableViewCell.swift in Sources */,
 				6AAE018D225B6A9A00A4E2A4 /* MenuViewController.swift in Sources */,
 				6AAE0199225B7E5C00A4E2A4 /* Human.swift in Sources */,
-				6AB147E024BAFDE0005077F3 /* ThemedDonateTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = ZL9396WK65;
 				INFOPLIST_FILE = MorpionTPE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -420,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.nathanfallet.MorpionTPE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -433,7 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = ZL9396WK65;
 				INFOPLIST_FILE = MorpionTPE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -441,7 +437,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.6.1;
 				PRODUCT_BUNDLE_IDENTIFIER = me.nathanfallet.MorpionTPE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -481,6 +477,14 @@
 				minimumVersion = 1.1.4;
 			};
 		};
+		6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/NathanFallet/MyAppsiOS";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -488,6 +492,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */;
 			productName = DonateViewController;
+		};
+		6AA1778B27A5DA4900775DEC /* MyAppsiOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */;
+			productName = MyAppsiOS;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

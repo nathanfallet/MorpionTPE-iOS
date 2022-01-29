@@ -65,18 +65,7 @@ class Game {
         datas.synchronize()
         
         // Check for new PRO features
-        let darkmodeUnlocked = datas.bool(forKey: "darkmodeUnlocked")
         let hardcoreUnlocked = datas.bool(forKey: "hardcoreUnlocked")
-        
-        // Check for darkmode
-        if !darkmodeUnlocked && numberOfGamesPlayed >= 5 {
-            // Save that the feature is unlocked
-            datas.set(true, forKey: "darkmodeUnlocked")
-            datas.synchronize()
-            
-            // And show alert
-            NotificationCenter.default.post(name: .darkmodeUnlocked, object: nil)
-        }
         
         // Check for hardcore
         if !hardcoreUnlocked && ((player1 as? Human != nil && player2 as? Computer != nil && win == player1.sign) || (player1 as? Computer != nil && player2 as? Human != nil && win == player2.sign)) {

@@ -22,12 +22,12 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Listen for color changes
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-        
         // Init colors
-        isDarkMode() ? enableDarkMode() : disableDarkMode()
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
         
         // Add elements to view
         view.addSubview(menu)
@@ -147,11 +147,6 @@ class MenuViewController: UIViewController {
         bottom.textAlignment = .center
     }
     
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
-    }
-    
     @objc func startGame(_ sender: UIButton) {
         let game: Game
         
@@ -175,24 +170,6 @@ class MenuViewController: UIViewController {
         settingsVC.modalPresentationStyle = .fullScreen
         
         present(settingsVC, animated: true, completion: nil)
-    }
-    
-    @objc override func enableDarkMode() {
-        super.enableDarkMode()
-        self.name.textColor = CustomColor.darkText
-        self.subname.textColor = CustomColor.darkText
-        self.bottom.textColor = CustomColor.darkText
-    }
-    
-    @objc override func disableDarkMode() {
-        super.disableDarkMode()
-        self.name.textColor = CustomColor.lightText
-        self.subname.textColor = CustomColor.lightText
-        self.bottom.textColor = CustomColor.lightText
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return isDarkMode() ? .lightContent : .default
     }
 
 }

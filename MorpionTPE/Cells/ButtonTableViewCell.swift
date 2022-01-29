@@ -27,6 +27,7 @@ class ButtonTableViewCell: UITableViewCell {
         button.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor).isActive = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.setTitleColor(CustomColor.lightActive, for: .normal)
         button.addTarget(self, action: #selector(onClick(_:)), for: .touchUpInside)
     }
     
@@ -34,18 +35,11 @@ class ButtonTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func with(title: String, alignment: UIControl.ContentHorizontalAlignment = .center, handler: @escaping () -> (), darkMode: Bool) -> ButtonTableViewCell {
+    func with(title: String, alignment: UIControl.ContentHorizontalAlignment = .center, handler: @escaping () -> ()) -> ButtonTableViewCell {
         self.handler = handler
         button.setTitle(title, for: .normal)
         button.contentHorizontalAlignment = alignment
         
-        if darkMode {
-            backgroundColor = CustomColor.darkBackground
-            button.setTitleColor(CustomColor.darkActive, for: .normal)
-        } else {
-            backgroundColor = CustomColor.lightBackground
-            button.setTitleColor(CustomColor.lightActive, for: .normal)
-        }
         return self
     }
     

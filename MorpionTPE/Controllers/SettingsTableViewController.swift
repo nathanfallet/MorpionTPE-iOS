@@ -8,6 +8,7 @@
 
 import UIKit
 import DonateViewController
+import MyAppsiOS
 
 class SettingsTableViewController: UITableViewController {
     
@@ -24,24 +25,14 @@ class SettingsTableViewController: UITableViewController {
         tableView.register(LabelTableViewCell.self, forCellReuseIdentifier: "labelCell")
         tableView.register(SwitchTableViewCell.self, forCellReuseIdentifier: "switchCell")
         tableView.register(ButtonTableViewCell.self, forCellReuseIdentifier: "buttonCell")
-        
-        // Listen for color changes
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-        
-        // Init colors
-        isDarkMode() ? enableDarkMode() : disableDarkMode()
+        tableView.register(MyAppTableViewCell.self, forCellReuseIdentifier: "myAppCell")
         
         // Check if PRO features are available
         let datas = UserDefaults.standard
-        let darkmodeUnlocked = datas.bool(forKey: "darkmodeUnlocked")
         let hardcoreUnlocked = datas.bool(forKey: "hardcoreUnlocked")
         
         // Create PRO section and add elements
         let pro = SettingsSection(name: "pro".localized(), elements: [])
-        if darkmodeUnlocked {
-            pro.elements += [SettingsElementSwitch(id: "isDarkMode", text: "isDarkMode".localized(), d: false)]
-        }
         if hardcoreUnlocked {
             pro.elements += [SettingsElementSwitch(id: "isHardcore", text: "isHardcore".localized(), d: false)]
         }
@@ -61,49 +52,11 @@ class SettingsTableViewController: UITableViewController {
                 }
             ]),
             SettingsSection(name: "Groupe MINASTE", elements: [
-                SettingsElementButton(id: "moreApps", text: "moreApps".localized()) { () in
-                    UIApplication.shared.open(URL(string: "https://itunes.apple.com/us/developer/groupe-minaste/id1378426984")!)
-                },
                 SettingsElementButton(id: "donate", text: "donate_title".localized()) { () in
                     self.navigationController?.pushViewController(CustomDonateViewController(), animated: true)
                 }
             ])
         ]
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
-    }
-    
-    @objc override func darkModeEnabled(_ notification: Foundation.Notification) {
-        super.darkModeEnabled(notification)
-        self.tableView.reloadData()
-    }
-    
-    @objc override func darkModeDisabled(_ notification: Foundation.Notification) {
-        super.darkModeDisabled(notification)
-        self.tableView.reloadData()
-    }
-    
-    @objc override func enableDarkMode() {
-        self.view.backgroundColor = CustomColor.darkTableBackground
-        self.tableView.backgroundColor = CustomColor.darkTableBackground
-        self.tableView.separatorColor = CustomColor.darkSeparator
-        self.navigationController?.navigationBar.barStyle = .black
-        self.navigationController?.navigationBar.barTintColor = CustomColor.darkBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.darkActive
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: CustomColor.darkText]
-    }
-    
-    @objc override func disableDarkMode() {
-        self.view.backgroundColor = CustomColor.lightTableBackground
-        self.tableView.backgroundColor = CustomColor.lightTableBackground
-        self.tableView.separatorColor = CustomColor.lightSeparator
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.barTintColor = CustomColor.lightBackground
-        self.navigationController?.navigationBar.tintColor = CustomColor.lightActive
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: CustomColor.lightText]
     }
     
     @objc func dismiss(_ sender: UIBarButtonItem) {
@@ -113,22 +66,26 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return sections.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].elements.count
+        return section == sections.count ? MyApp.values.count : sections[section].elements.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].name
+        return section == sections.count ? MyAppHeaderText.localizedString : sections[section].name
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == sections.count {
+            return (tableView.dequeueReusableCell(withIdentifier: "myAppCell", for: indexPath) as! MyAppTableViewCell).with(app: MyApp.values[indexPath.row])
+        }
+        
         let element = sections[indexPath.section].elements[indexPath.row]
         
         if let e = element as? SettingsElementLabel {
-            return (tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! LabelTableViewCell).with(text: e.text, darkMode: isDarkMode())
+            return (tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! LabelTableViewCell).with(text: e.text)
         } else if let e = element as? SettingsElementSwitch {
             let datas = UserDefaults.standard
             var enabled = e.d
@@ -137,16 +94,22 @@ class SettingsTableViewController: UITableViewController {
                 enabled = datas.bool(forKey: e.id)
             }
             
-            return (tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchTableViewCell).with(id: e.id, text: e.text, preference: true, enabled: enabled, darkMode: isDarkMode())
+            return (tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchTableViewCell).with(id: e.id, text: e.text, preference: true, enabled: enabled)
         } else if let e = element as? SettingsElementButton {
-            return (tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell).with(title: e.text, alignment: .left, handler: e.handler, darkMode: isDarkMode())
+            return (tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell).with(title: e.text, alignment: .left, handler: e.handler)
         }
         
         return UITableViewCell()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == sections.count {
+            (tableView.cellForRow(at: indexPath) as? MyAppTableViewCell)?.openURL()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return indexPath.section == sections.count ? 68 : 44
     }
 
 }

@@ -207,7 +207,7 @@
 			mainGroup = 6AAE016C225B677400A4E2A4;
 			packageReferences = (
 				6A61A50524B7C42F00363F25 /* XCRemoteSwiftPackageReference "DonateViewController" */,
-				6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */,
+				6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyApps" */,
 			);
 			productRefGroup = 6AAE0176225B677400A4E2A4 /* Products */;
 			projectDirPath = "";
@@ -477,12 +477,12 @@
 				minimumVersion = 1.1.4;
 			};
 		};
-		6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */ = {
+		6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyApps" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/NathanFallet/MyApps";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -495,7 +495,7 @@
 		};
 		6AA1778B27A5DA4900775DEC /* MyAppsiOS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyAppsiOS" */;
+			package = 6AA1778A27A5DA4900775DEC /* XCRemoteSwiftPackageReference "MyApps" */;
 			productName = MyAppsiOS;
 		};
 /* End XCSwiftPackageProductDependency section */
